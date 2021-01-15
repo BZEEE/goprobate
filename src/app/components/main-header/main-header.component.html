@@ -1,0 +1,35 @@
+
+<div style="background-color: aqua ;display: flex; justify-content: space-between; width: 100%; padding: 20px;">
+    <h2>GoProbate</h2>
+    <ul nz-menu nzMode="horizontal">
+        <li nz-submenu nzTitle="Vendor">
+            <ul>
+                <li nz-menu-item >Add Vendor</li>
+                <li nz-menu-item >Update Vendor</li>
+                <!-- <li nz-menu-item (click)="setCurrentAdminComponent('Archive Vendor')">Archive Vendor</li> -->
+              </ul>
+        </li>
+    </ul>
+    <!-- <ul nz-menu nzMode="horizontal" nzTitle="Your Account">
+        <ul>
+            <ng-template *ngIf="auth.user | async as user; else showLogin">
+                <li nz-menu-item (click)="goToAccountPage()">Your Account</li>
+                <li nz-menu-item (click)="signOut()">Sign Out</li>
+            </ng-template>
+            <ng-template #showLogin>
+                <li nz-menu-item (click)="signIn()">Sign In</li>
+            </ng-template>
+        </ul>
+    </ul> -->
+    <!-- <li nz-submenu nzTitle="Broker">
+        <ul>
+            <ng-template *ngIf="auth.user | async as user; else showLogin">
+                <li nz-menu-item (click)="goToAccountPage()">Your Account</li>
+                <li nz-menu-item (click)="signOut()">Sign Out</li>
+            </ng-template>
+            <ng-template #showLogin>
+                <li nz-menu-item (click)="signIn()">Sign In</li>
+            </ng-template>
+        </ul>
+    </li> -->
+</div>
