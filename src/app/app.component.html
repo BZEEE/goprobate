@@ -19,24 +19,48 @@
           </li>
         </ul>
       </li>
-      <li nz-submenu nzOpen nzTitle="Applications" nzIcon="form">
+      <li nz-submenu nzOpen nzTitle="Applications" nzIcon="audit">
         <ul>
           <li nz-menu-item nzMatchRouter>
             <a routerLink="/applications/grant-of-probate">Grant of Probate</a>
           </li>
-        </ul>
-        <ul>
           <li nz-menu-item nzMatchRouter>
             <a routerLink="/applications/grant-of-admin">Grant of Admin</a>
           </li>
         </ul>
       </li>
-      <li nz-submenu nzOpen nzTitle="Payments" nzIcon="transaction">
+      <li nz-submenu nzOpen nzTitle="Payments" nzIcon="pay-circle">
         <ul>
           <li nz-menu-item nzMatchRouter>
             <a routerLink="/payment-history">History</a>
           </li>
         </ul>
+      </li>
+      <li nz-menu-item>
+        <i nz-icon nzType="question-circle"></i>
+        <a *ngIf="isCollapsed" routerLink="/faq"></a>
+        <a *ngIf="!isCollapsed" routerLink="/faq">FAQ</a>
+      </li>
+      <li nz-menu-item>
+        <i nz-icon nzType="info-circle"></i>
+        <a *ngIf="isCollapsed" routerLink="/privacy-policy"></a>
+        <a *ngIf="!isCollapsed" routerLink="/privacy-policy">Privacy Policy</a>
+      </li>
+      <li nz-menu-item>
+        <i nz-icon nzType="file-text"></i>
+        <a *ngIf="isCollapsed" routerLink="/terms-and-conditions"></a>
+        <a *ngIf="!isCollapsed" routerLink="/terms-and-conditions">Terms and Conditions</a>
+      </li>
+      <!-- Login sidemenu -->
+      <li nz-menu-item>
+        <i nz-icon nzType="login"></i>
+        <a *ngIf="isCollapsed" routerLink="/sign-in"></a>
+        <a *ngIf="!isCollapsed" routerLink="/sign-in">Sign In</a>
+      </li>
+      <!-- Logout sidemenu -->
+      <li nz-menu-item (click)="signOut()">
+        <i nz-icon nzType="logout"></i>
+        <span>Sign Out</span>
       </li>
     </ul>
   </nz-sider>
@@ -58,5 +82,3 @@
     </nz-content>
   </nz-layout>
 </nz-layout>
-
-<!-- <app-main-header></app-main-header> -->

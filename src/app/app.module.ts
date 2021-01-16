@@ -9,7 +9,7 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from '@angular/fire';
@@ -21,6 +21,16 @@ import { PersonalInfoComponent } from './components/personal-info/personal-info.
 import { ApplicationsComponent } from './components/applications/applications.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
 import { NzFormModule } from 'ng-zorro-antd/form'
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { GoProbateMainInformationComponent } from './components/go-probate-main-information/go-probate-main-information.component';
+import { FaqComponent } from './components/faq/faq.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { TermsAndConditionsComponent } from './components/terms-and-conditions/terms-and-conditions.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { CreateAccountComponent } from './components/create-account/create-account.component';
 
 registerLocaleData(en);
 
@@ -31,7 +41,14 @@ registerLocaleData(en);
     MainFooterComponent,
     PersonalInfoComponent,
     ApplicationsComponent,
-    PaymentHistoryComponent
+    PaymentHistoryComponent,
+    GoProbateMainInformationComponent,
+    FaqComponent,
+    PrivacyPolicyComponent,
+    TermsAndConditionsComponent,
+    PageNotFoundComponent,
+    SignInComponent,
+    CreateAccountComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -44,6 +61,10 @@ registerLocaleData(en);
     NzLayoutModule,
     NzMenuModule,
     NzFormModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
