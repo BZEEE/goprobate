@@ -24,6 +24,8 @@ import { NzFormModule } from 'ng-zorro-antd/form'
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
 import { GoProbateMainInformationComponent } from './components/go-probate-main-information/go-probate-main-information.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
@@ -31,6 +33,7 @@ import { TermsAndConditionsComponent } from './components/terms-and-conditions/t
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
+import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
 
 registerLocaleData(en);
 
@@ -48,7 +51,8 @@ registerLocaleData(en);
     TermsAndConditionsComponent,
     PageNotFoundComponent,
     SignInComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    LoadingScreenComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -64,7 +68,9 @@ registerLocaleData(en);
     ReactiveFormsModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

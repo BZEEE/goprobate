@@ -1,1 +1,33 @@
-<p>sign-in works!</p>
+
+<!-- loading screen -->
+<app-loading-screen></app-loading-screen>
+
+<div style="display: flex ;width: 100%; justify-content: center;margin-bottom: 10px;">
+    <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
+</div>
+<h2 style="text-align: center;">Welcome To GoProbate</h2>
+<form *ngIf="!forgotPasswordFlag" [formGroup]="signInForm" nz-form>
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 10px;">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+        <mat-error *ngIf="signInForm.get('email').invalid">{{formErrorSvc.getErrorMessage('email', signInForm.get('email'))}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 10px;">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password">
+        <mat-error *ngIf="signInForm.get('password').invalid">{{formErrorSvc.getErrorMessage('password', signInForm.get('password'))}}</mat-error>
+    </mat-form-field>
+</form>
+<form *ngIf="forgotPasswordFlag" [formGroup]="signInForm" nz-form>
+    <mat-form-field appearance="outline" style="width: 100%; margin-bottom: 10px;">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="passwordResetEmail">
+        <mat-error *ngIf="signInForm.get('passwordResetEmail').invalid">{{formErrorSvc.getErrorMessage('passwordResetEmail', signInForm.get('passwordResetEmail'))}}</mat-error>
+    </mat-form-field>
+</form>
+
+<button *ngIf="!forgotPasswordFlag" (click)="signIn()" mat-raised-button color="primary" style="width: 100%; margin-bottom: 20px; padding: 10px;">Sign In</button>
+<p *ngIf="!forgotPasswordFlag" style="text-align: end; margin-bottom: 20px; font-style: italic; font-size: 14px; cursor: pointer;" (click)="createAccount()">No account? Create one!</p>
+<p *ngIf="!forgotPasswordFlag" style="text-align: end; margin-bottom: 20px; font-style: italic; font-size: 14px; cursor: pointer;" (click)="toggleForgotPassword()">Forgot your password?</p>
+<p *ngIf="forgotPasswordFlag" style="text-align: end; margin-bottom: 20px; font-style: italic; font-size: 14px; cursor: pointer;" (click)="toggleForgotPassword()">Back to sign in</p>
+<button *ngIf="forgotPasswordFlag" mat-raised-button color="primary" style="width: 100%; margin-bottom: 20px; padding: 10px;" (click)="sendPasswordResetEmail()">Send Reset Email</button>

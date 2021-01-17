@@ -6,62 +6,70 @@
             [(nzCollapsed)]="isCollapsed"
             [nzTrigger]="null">
     <div class="sidebar-logo">
-      <a href="https://ng.ant.design/" target="_blank">
+      <a routerLink="/main">
         <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
         <h1>Go Probate</h1>
       </a>
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <li nz-submenu nzOpen nzTitle="Profile" nzIcon="user">
-        <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="/personal-info">Personal Info</a>
-          </li>
-        </ul>
-      </li>
-      <li nz-submenu nzOpen nzTitle="Applications" nzIcon="audit">
-        <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="/applications/grant-of-probate">Grant of Probate</a>
-          </li>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="/applications/grant-of-admin">Grant of Admin</a>
-          </li>
-        </ul>
-      </li>
-      <li nz-submenu nzOpen nzTitle="Payments" nzIcon="pay-circle">
-        <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="/payment-history">History</a>
-          </li>
-        </ul>
-      </li>
-      <li nz-menu-item>
-        <i nz-icon nzType="question-circle"></i>
-        <a *ngIf="isCollapsed" routerLink="/faq"></a>
-        <a *ngIf="!isCollapsed" routerLink="/faq">FAQ</a>
-      </li>
-      <li nz-menu-item>
-        <i nz-icon nzType="info-circle"></i>
-        <a *ngIf="isCollapsed" routerLink="/privacy-policy"></a>
-        <a *ngIf="!isCollapsed" routerLink="/privacy-policy">Privacy Policy</a>
-      </li>
-      <li nz-menu-item>
-        <i nz-icon nzType="file-text"></i>
-        <a *ngIf="isCollapsed" routerLink="/terms-and-conditions"></a>
-        <a *ngIf="!isCollapsed" routerLink="/terms-and-conditions">Terms and Conditions</a>
-      </li>
-      <!-- Login sidemenu -->
-      <li nz-menu-item>
-        <i nz-icon nzType="login"></i>
-        <a *ngIf="isCollapsed" routerLink="/sign-in"></a>
-        <a *ngIf="!isCollapsed" routerLink="/sign-in">Sign In</a>
-      </li>
-      <!-- Logout sidemenu -->
-      <li nz-menu-item (click)="signOut()">
-        <i nz-icon nzType="logout"></i>
-        <span>Sign Out</span>
-      </li>
+      
+      <!-- if user is already logged in -->
+      <div *ngIf="user">
+        <li nz-submenu nzOpen nzTitle="Profile" nzIcon="user">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/personal-info">Personal Info</a>
+            </li>
+          </ul>
+        </li>
+        <li nz-submenu nzOpen nzTitle="Applications" nzIcon="audit">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/applications/grant-of-probate">Grant of Probate</a>
+            </li>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/applications/grant-of-admin">Grant of Admin</a>
+            </li>
+          </ul>
+        </li>
+        <li nz-submenu nzOpen nzTitle="Payments" nzIcon="pay-circle">
+          <ul>
+            <li nz-menu-item nzMatchRouter>
+              <a routerLink="/payment-history">History</a>
+            </li>
+          </ul>
+        </li>
+        <li nz-menu-item>
+          <i nz-icon nzType="question-circle"></i>
+          <a *ngIf="isCollapsed" routerLink="/faq"></a>
+          <a *ngIf="!isCollapsed" routerLink="/faq">FAQ</a>
+        </li>
+        <li nz-menu-item>
+          <i nz-icon nzType="info-circle"></i>
+          <a *ngIf="isCollapsed" routerLink="/privacy-policy"></a>
+          <a *ngIf="!isCollapsed" routerLink="/privacy-policy">Privacy Policy</a>
+        </li>
+        <li nz-menu-item>
+          <i nz-icon nzType="file-text"></i>
+          <a *ngIf="isCollapsed" routerLink="/terms-and-conditions"></a>
+          <a *ngIf="!isCollapsed" routerLink="/terms-and-conditions">Terms and Conditions</a>
+        </li>
+        <!-- Logout sidemenu -->
+        <li nz-menu-item (click)="signOut()">
+          <i nz-icon nzType="logout"></i>
+          <span *ngIf="!isCollapsed">Sign Out</span>
+        </li>
+      </div>
+
+      <!-- If user is not logged in yet -->
+      <div *ngIf="!user">
+         <li nz-menu-item>
+          <i nz-icon nzType="login"></i>
+          <a *ngIf="isCollapsed" routerLink="/sign-in"></a>
+          <a *ngIf="!isCollapsed" routerLink="/sign-in">Sign In</a>
+        </li>
+      </div>
+      
     </ul>
   </nz-sider>
   <nz-layout>
