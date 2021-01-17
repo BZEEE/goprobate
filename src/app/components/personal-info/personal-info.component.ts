@@ -33,6 +33,8 @@ export class PersonalInfoComponent implements OnInit {
 
   changeEmail() {}
 
-  changePassword() {}
+  changePassword() {
+    
+  }
 
 }

@@ -68,6 +68,21 @@
           <a *ngIf="isCollapsed" routerLink="/sign-in"></a>
           <a *ngIf="!isCollapsed" routerLink="/sign-in">Sign In</a>
         </li>
+        <li nz-menu-item>
+          <i nz-icon nzType="question-circle"></i>
+          <a *ngIf="isCollapsed" routerLink="/faq"></a>
+          <a *ngIf="!isCollapsed" routerLink="/faq">FAQ</a>
+        </li>
+        <li nz-menu-item>
+          <i nz-icon nzType="info-circle"></i>
+          <a *ngIf="isCollapsed" routerLink="/privacy-policy"></a>
+          <a *ngIf="!isCollapsed" routerLink="/privacy-policy">Privacy Policy</a>
+        </li>
+        <li nz-menu-item>
+          <i nz-icon nzType="file-text"></i>
+          <a *ngIf="isCollapsed" routerLink="/terms-and-conditions"></a>
+          <a *ngIf="!isCollapsed" routerLink="/terms-and-conditions">Terms and Conditions</a>
+        </li>
       </div>
       
     </ul>

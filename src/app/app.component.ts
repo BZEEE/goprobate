@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
   signOut() {
     this.auth.signOut().then((response) => {
       this.router.navigate(['/main'])
+      this.snackBar.open("successfully logged out", "dismiss")
     }).catch((e) => {
       this.snackBar.open("failed to log out", "dismiss")
     })
