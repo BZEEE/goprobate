@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { environment } from 'src/environments/environment.prod';
 import { IconsProviderModule } from './icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
@@ -89,7 +90,8 @@ registerLocaleData(en);
     NzTableModule,
     MatCardModule,
     MatSelectModule,
-    MatIconModule
+    MatIconModule,
+    AngularFireFunctionsModule
   ],
   providers: [CurrentUserResolverService,
               { provide: NZ_I18N, useValue: en_US }],

@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { AngularFireFunctions } from '@angular/fire/functions';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { StripeCardElementOptions, StripeElementsOptions } from '@stripe/stripe-js';
 import { StripeCardComponent, StripeCardNumberComponent, StripeService } from 'ngx-stripe';
@@ -17,6 +18,7 @@ export class PaymentComponent implements OnInit {
  
   constructor(private fb: FormBuilder,
               public formErrorSvc: FormErrorService,
+              private firebaseFunctions: AngularFireFunctions,
               private formValidatorSvc: FormValidatorService,
               private stripeService: StripeService) {}
  
@@ -32,6 +34,8 @@ export class PaymentComponent implements OnInit {
 
   pay() {
     // send request to backend and create token for payment
+    const fun = this.firebaseFunctions.httpsCallable("some")
+    let data = fun({name: "some data"})
   }
 
 }
