@@ -1,0 +1,21 @@
+
+
+
+<h2>Legal Documents</h2>
+
+<nz-table [nzData]="documents">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody class="ef-deal-list-card">
+        <tr *ngFor="let document of documents">
+            <td>{{document.documentName}}</td>
+            <td>{{document.documentType}}</td>
+            <td (click)="download(document)">download</td>
+        </tr>
+    </tbody>
+</nz-table>

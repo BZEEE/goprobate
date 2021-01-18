@@ -25,11 +25,13 @@ import { NzFormModule } from 'ng-zorro-antd/form'
 import { NzModalModule } from 'ng-zorro-antd/modal'
 import { NzDividerModule } from 'ng-zorro-antd/divider'
 import { NzTableModule } from 'ng-zorro-antd/table'
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox'
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
@@ -45,6 +47,7 @@ import { CurrentUserResolverService } from './services/current-user-resolver.ser
 import { StartApplicationComponent } from './components/start-application/start-application.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { NgxStripeModule } from 'ngx-stripe';
+import { GeneratedDocumentsComponent } from './components/generated-documents/generated-documents.component';
 
 registerLocaleData(en);
 
@@ -65,7 +68,8 @@ registerLocaleData(en);
     CreateAccountComponent,
     LoadingScreenComponent,
     StartApplicationComponent,
-    PaymentComponent
+    PaymentComponent,
+    GeneratedDocumentsComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -91,7 +95,9 @@ registerLocaleData(en);
     MatCardModule,
     MatSelectModule,
     MatIconModule,
-    AngularFireFunctionsModule
+    AngularFireFunctionsModule,
+    MatCheckboxModule,
+    NzCheckboxModule
   ],
   providers: [CurrentUserResolverService,
               { provide: NZ_I18N, useValue: en_US }],

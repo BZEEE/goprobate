@@ -10,6 +10,15 @@ export class FormValidatorService {
 
   validateForm(form: FormGroup | AbstractControl) {
     form.markAllAsTouched()
+    if (form instanceof FormGroup) {
+      for (const i in form.controls) {
+        form.controls[i].markAsDirty();
+        form.controls[i].updateValueAndValidity();
+      }
+    } else {
+      form.markAsDirty()
+      form.updateValueAndValidity()
+    }
     return form.valid
   }
 }

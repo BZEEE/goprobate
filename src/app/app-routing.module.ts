@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { ApplicationsComponent } from './components/applications/applications.component';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
 import { FaqComponent } from './components/faq/faq.component';
+import { GeneratedDocumentsComponent } from './components/generated-documents/generated-documents.component';
 import { GoProbateMainInformationComponent } from './components/go-probate-main-information/go-probate-main-information.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'start-application', component: StartApplicationComponent, canActivate: [RedirectUnauthorizedToService] },
   { path: 'personal-info', component: PersonalInfoComponent, canActivate: [RedirectUnauthorizedToService] },
   { path: 'applications/:type', component: ApplicationsComponent, canActivate: [RedirectUnauthorizedToService]},
+  { path: 'documents/:applicationId', component: GeneratedDocumentsComponent, canActivate: [RedirectUnauthorizedToService] },
   { path: 'payment-history', component: PaymentHistoryComponent, canActivate: [RedirectUnauthorizedToService]},
   { path: 'faq', component: FaqComponent},
   { path: 'privacy-policy', component: PrivacyPolicyComponent},

@@ -1,6 +1,18 @@
 <!-- loading screen -->
 <app-loading-screen></app-loading-screen>
 
+<!-- terms and conditions lightbox -->
+<nz-modal [(nzVisible)]="showTermsAndConditions" [nzTitle]="'Terms and Conditions'" [nzContent]="termsAndConditionsContent" [nzFooter]="termsAndConditionsFooter" [nzClosable]="false" nzWidth="90%" >
+    <ng-template #termsAndConditionsContent>
+        <app-terms-and-conditions></app-terms-and-conditions>
+</ng-template>    
+    <ng-template #termsAndConditionsFooter>
+        <div style="display: flex;">
+            <button (click)="showTermsAndConditions = !showTermsAndConditions" mat-raised-button color="primary" style="padding: 10px;">Close</button>
+        </div>
+    </ng-template>
+</nz-modal>
+
 <div style="display: flex ;width: 100%; justify-content: center;margin-bottom: 10px;">
     <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo">
 </div>
@@ -31,6 +43,15 @@
         <input matInput formControlName="password">
         <mat-error *ngIf="createAccountForm.get('password').invalid">{{formErrorSvc.getErrorMessage('password', createAccountForm.get('password'))}}</mat-error>
     </mat-form-field>
+
+    <nz-form-item style="width: 100%; margin-bottom: 10px;">
+        <nz-form-control nzErrorTip="you must accept the terms and conditions">
+            <label nz-checkbox name="termsAndConditions" formControlName="termsAndConditions" style="margin-right: 10px"></label>
+            <nz-form-label nzFor="termsAndConditions">I have read and understand the
+                <p style="color: blue; margin: 0px; margin-left: 3px; cursor: pointer;" (click)="showTermsAndConditions = !showTermsAndConditions">Terms and Conditions</p>
+            </nz-form-label>
+        </nz-form-control>
+    </nz-form-item>
 </form>
 
 <button (click)="createAccount()" mat-raised-button color="primary" style="width: 100%; margin-bottom: 20px; padding: 10px;">Create Account</button>

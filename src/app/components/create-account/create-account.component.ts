@@ -4,8 +4,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
-import { User } from 'src/app/models/user';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox'
 import { FormErrorService } from 'src/app/services/form-error.service';
 import { FormValidatorService } from 'src/app/services/form-validator.service';
 import { LoadingScreenComponent } from '../loading-screen/loading-screen.component';
@@ -18,6 +17,7 @@ import { LoadingScreenComponent } from '../loading-screen/loading-screen.compone
 export class CreateAccountComponent implements OnInit {
   @ViewChild(LoadingScreenComponent, {static: false}) loadingScreen: LoadingScreenComponent;
   createAccountForm: FormGroup
+  showTermsAndConditions: boolean
 
   constructor(private fb: FormBuilder,
               private router: Router,
@@ -33,7 +33,8 @@ export class CreateAccountComponent implements OnInit {
       password: new FormControl(null, [Validators.required]),
       fullName: new FormControl(null, [Validators.required]),
       address: new FormControl(null, [Validators.required]),
-      companyName: new FormControl(null)
+      companyName: new FormControl(null),
+      termsAndConditions: new FormControl(false, [Validators.requiredTrue])
     })
   }
 

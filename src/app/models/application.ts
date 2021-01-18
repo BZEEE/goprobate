@@ -1,5 +1,6 @@
 
 export class Application {
+    id: string
     applicationName: string
     applicationType: string
 
