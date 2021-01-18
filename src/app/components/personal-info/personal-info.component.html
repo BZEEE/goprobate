@@ -1,8 +1,39 @@
 
+<!-- loading screen -->
+<app-loading-screen></app-loading-screen>
+
+<!-- change email lightbox -->
+<nz-modal [(nzVisible)]="showChangeEmail" [nzTitle]="'Change Email'" [nzContent]="emailContent" [nzFooter]="emailFooter" [nzClosable]="false" nzWidth="90%" >
+    <ng-template #emailContent>
+        <form [formGroup]="changeEmailForm" nz-form>
+            <mat-form-field appearance="outline" style="width: 100%;">
+                <mat-label>New Email</mat-label>
+                <input matInput formControlName="newEmail">
+                <mat-error *ngIf="changeEmailForm.get('newEmail').invalid">{{formErrorSvc.getErrorMessage('newEmail', changeEmailForm.get('newEmail'))}}</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" style="width: 100%;">
+                <mat-label>Old Email</mat-label>
+                <input matInput formControlName="oldEmail">
+                <mat-error *ngIf="changeEmailForm.get('oldEmail').invalid">{{formErrorSvc.getErrorMessage('oldEmail', changeEmailForm.get('oldEmail'))}}</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" style="width: 100%;">
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password">
+                <mat-error *ngIf="changeEmailForm.get('password').invalid">{{formErrorSvc.getErrorMessage('password', changeEmailForm.get('password'))}}</mat-error>
+            </mat-form-field>
+        </form>
+    </ng-template>    
+    <ng-template #emailFooter>
+        <div style="display: flex;">
+            <button (click)="changeEmail()" mat-raised-button color="primary" style="padding: 10px; margin-right: 15px;">Submit</button>
+            <button (click)="showChangeEmail = !showChangeEmail" mat-raised-button color="primary" style="padding: 10px;">Cancel</button>
+        </div>
+    </ng-template>
+</nz-modal>
 
 
 <h2>Profile Information</h2>
-<form [formGroup]="personalInfoForm" nz-form>
+<form [formGroup]="personalInfoForm" style="margin-bottom:20px;" nz-form>
     <div class="section-wrapper">
         <div class="left-div">
             <mat-form-field appearance="outline">
@@ -12,36 +43,30 @@
         </div>
         <div class="right-div">
             <mat-form-field appearance="outline">
-                <mat-label>Password</mat-label>
-                <input matInput formControlName="password">
+                <mat-label>Full Name</mat-label>
+                <input matInput formControlName="fullName">
+                <mat-error *ngIf="personalInfoForm.get('fullName').invalid">{{formErrorSvc.getErrorMessage('fullName', personalInfoForm.get('fullName'))}}</mat-error>
             </mat-form-field>
         </div>
     </div>
     <div class="section-wrapper">
         <div class="left-div">
             <mat-form-field appearance="outline">
-                <mat-label>Full Name</mat-label>
-                <input matInput formControlName="fullName">
+                <mat-label>Address</mat-label>
+                <input matInput formControlName="address">
+                <mat-error *ngIf="personalInfoForm.get('address').invalid">{{formErrorSvc.getErrorMessage('address', personalInfoForm.get('address'))}}</mat-error>
             </mat-form-field>
         </div>
         <div class="right-div">
             <mat-form-field appearance="outline">
                 <mat-label>Company Name</mat-label>
                 <input matInput formControlName="companyName">
+                <mat-error *ngIf="personalInfoForm.get('companyName').invalid">{{formErrorSvc.getErrorMessage('companyName', personalInfoForm.get('companyName'))}}</mat-error>
             </mat-form-field>
         </div>
-    </div>
-    <div class="ef-form-field-section-wrapper">
-        <div class="left-div">
-            <mat-form-field appearance="outline">
-                <mat-label>Address</mat-label>
-                <input matInput formControlName="address">
-            </mat-form-field>
-        </div>
-        <div class="right-div"></div>
     </div>
 </form>
 
-<button (click)="updateProfile()" mat-raised-button color="primary" style="width: 100%; margin-bottom: 15px; padding: 10px;">Update Profile</button>
-<button (click)="changeEmail()" mat-raised-button color="primary" style="width: 100%; margin-bottom: 15px; padding: 10px;">Change Email</button>
+<button (click)="updateProfile()" mat-raised-button color="primary" style="width: 100%; margin-bottom: 20px; padding: 10px;">Update Profile</button>
+<button (click)="showChangeEmail = !showChangeEmail" mat-raised-button color="primary" style="width: 100%; margin-bottom: 20px; padding: 10px;">Change Email</button>
 <button (click)="changePassword()" mat-raised-button color="primary" style="width: 100%; padding: 10px;">Change Password</button>

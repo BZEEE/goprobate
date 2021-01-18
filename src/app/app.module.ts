@@ -21,8 +21,14 @@ import { PersonalInfoComponent } from './components/personal-info/personal-info.
 import { ApplicationsComponent } from './components/applications/applications.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
 import { NzFormModule } from 'ng-zorro-antd/form'
+import { NzModalModule } from 'ng-zorro-antd/modal'
+import { NzDividerModule } from 'ng-zorro-antd/divider'
+import { NzTableModule } from 'ng-zorro-antd/table'
+import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
@@ -34,6 +40,10 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
 import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
+import { CurrentUserResolverService } from './services/current-user-resolver.service';
+import { StartApplicationComponent } from './components/start-application/start-application.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { NgxStripeModule } from 'ngx-stripe';
 
 registerLocaleData(en);
 
@@ -52,10 +62,13 @@ registerLocaleData(en);
     PageNotFoundComponent,
     SignInComponent,
     CreateAccountComponent,
-    LoadingScreenComponent
+    LoadingScreenComponent,
+    StartApplicationComponent,
+    PaymentComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    NgxStripeModule.forRoot(environment.stripe),
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -70,9 +83,16 @@ registerLocaleData(en);
     MatFormFieldModule,
     MatInputModule,
     MatProgressSpinnerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NzModalModule,
+    NzDividerModule,
+    NzTableModule,
+    MatCardModule,
+    MatSelectModule,
+    MatIconModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [CurrentUserResolverService,
+              { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

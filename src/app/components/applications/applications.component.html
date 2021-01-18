@@ -1,1 +1,29 @@
-<p>applications works!</p>
+
+<div style="display: flex; justify-content: space-between;margin-bottom: 20px;">
+    <h2>Applications</h2>
+    <button (click)="startApplication()" mat-raised-button color="primary" style="padding: 10px;">Start Application</button>
+</div>
+
+<nz-table [nzData]="applications">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody class="ef-deal-list-card">
+        <tr *ngFor="let application of applications; let i = index">
+            <td>{{application.applicationName}}</td>
+            <td>{{application.applicationType}}</td>
+            <td style="display: flex; justify-content: flex-end; align-items: center;">
+                <p (click)="editApplication()">Edit</p>
+                <nz-divider nzType="vertical" style="background-color: black;"></nz-divider>
+                <p (click)="generateDocs()">Generate Docs</p>
+                <nz-divider nzType="vertical" style="background-color: black;"></nz-divider>
+                <p (click)="viewDocs()">View Docs</p>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>
+

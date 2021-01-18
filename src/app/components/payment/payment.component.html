@@ -1,0 +1,48 @@
+<h2 style="width: 100%; text-align: center;">Payment Invoice</h2>
+
+<form [formGroup]="paymentForm" style="margin-bottom: 20px;" nz-form>
+    <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Name on Card</mat-label>
+        <input matInput formControlName="fullName">
+        <mat-error *ngIf="paymentForm.get('fullName').invalid">{{formErrorSvc.getErrorMessage('fullName', paymentForm.get('fullName'))}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Card Number</mat-label>
+        <input matInput formControlName="cardNumber">
+        <mat-error *ngIf="paymentForm.get('cardNumber').invalid">{{formErrorSvc.getErrorMessage('cardNumber', paymentForm.get('cardNumber'))}}</mat-error>
+    </mat-form-field>
+    <div class="section-wrapper">
+        <div class="left-div">
+            <mat-form-field appearance="outline" style="width: 100%;">
+                <mat-label>Card Expiry Date</mat-label>
+                <input matInput formControlName="cardExpiryDate">
+                <mat-error *ngIf="paymentForm.get('cardExpiryDate').invalid">{{formErrorSvc.getErrorMessage('cardExpiryDate', paymentForm.get('cardExpiryDate'))}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="right-div">
+            <mat-form-field appearance="outline" style="width: 100%;">
+                <mat-label>Security Code</mat-label>
+                <input matInput formControlName="cvc">
+                <mat-error *ngIf="paymentForm.get('cvc').invalid">{{formErrorSvc.getErrorMessage('cvc', paymentForm.get('cvc'))}}</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    
+</form>
+<button (click)="pay()" mat-raised-button color="primary" style="width: 100%; padding: 10px;">
+    <i style="margin-right: 5px;" nz-icon nzType="lock"></i>
+    Pay  ${{amount}}
+</button>
+
+<!-- <ngx-stripe-card-group
+  [formGroup]="paymentForm"
+  [elementsOptions]="elementsOptions"
+>
+  <input formControlName="fullName" />
+  <ngx-stripe-card-number [options]="cardOptions"></ngx-stripe-card-number>
+  <ngx-stripe-card-expiry [options]="cardOptions"></ngx-stripe-card-expiry>
+  <ngx-stripe-card-cvc [options]="cardOptions"></ngx-stripe-card-cvc>
+  <button type="submit" (click)="pay()">PAY</button>
+</ngx-stripe-card-group> -->
+
+

@@ -1,0 +1,57 @@
+
+<!-- change email lightbox -->
+<nz-modal [(nzVisible)]="showSelectProvince" [nzTitle]="'Select Province For Application'" [nzContent]="startApplicationContent" [nzFooter]="startApplicationFooter" [nzClosable]="false" nzWidth="90%" >
+    <ng-template #startApplicationContent>
+        <form [formGroup]="startApplicationForm" nz-form>
+            <mat-form-field appearance="outline" style="width: 100%;">
+                <mat-label>Select Province</mat-label>
+                <mat-select formControlName="province">
+                    <mat-option *ngFor="let prov of provinces" [value]="prov">{{prov}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="startApplicationForm.get('province').invalid">{{formErrorSvc.getErrorMessage('province', startApplicationForm.get('province'))}}</mat-error>
+            </mat-form-field>
+        </form>
+    </ng-template>    
+    <ng-template #startApplicationFooter>
+        <div style="display: flex;">
+            <button (click)="startApplication()" mat-raised-button color="primary" style="padding: 10px; margin-right: 15px;">Next</button>
+            <button (click)="showSelectProvince = !showSelectProvince" mat-raised-button color="primary" style="padding: 10px;">Cancel</button>
+        </div>
+    </ng-template>
+</nz-modal>
+
+
+<div style="display: flex; justify-content: space-around;">
+
+    <!-- Grant of Probate Card -->
+    <mat-card class="width: 50%">
+        <mat-card-header>
+          <mat-card-title>Grant of Probate</mat-card-title>
+          <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            Text explaining Grant of Probate
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button (click)="startGrantOfProbate()" mat-raised-button color="primary" style="width: 100%; padding: 10px;">Start Application</button>
+        </mat-card-actions>
+      </mat-card>
+
+      <!-- Grant Of Admin Card -->
+      <mat-card class="width: 50%">
+        <mat-card-header>
+          <mat-card-title>Grant of Admin</mat-card-title>
+          <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            Text explaining Grant of Admin
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button (click)="startGrantOfAdmin()" mat-raised-button color="primary" style="width: 100%; padding: 10px;">Start Application</button>
+        </mat-card-actions>
+      </mat-card>
+</div>

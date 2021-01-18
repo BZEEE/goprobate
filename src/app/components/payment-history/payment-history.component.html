@@ -1,1 +1,20 @@
-<p>payment-history works!</p>
+
+
+<h2>Payment History</h2>
+
+<nz-table [nzData]="payments">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+    <tbody class="ef-deal-list-card">
+        <tr *ngFor="let payment of payments">
+            <td>{{payment.paymentName}}</td>
+            <td>{{payment.paymentDate}}</td>
+            <td>{{payment.paymentAmount}}</td>
+        </tr>
+    </tbody>
+</nz-table>

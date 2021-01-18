@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router'
+import { CurrentUserService } from './current-user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,12 +9,13 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from
 export class RedirectLoggedInToService implements CanActivate {
 
   constructor(public auth: AngularFireAuth,
-    private router: Router) { }
+              private currentUserSvc: CurrentUserService,
+              private router: Router) { }
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
     return new Promise((resolve, reject) => {
       this.auth.user.subscribe((user) => {
-        console.log(user)
+        this.currentUserSvc.setCurrentUser(user)
         if (user != null) {
           this.router.navigate(['/personal-info'])
           return resolve(false)

@@ -15,14 +15,14 @@
       
       <!-- if user is already logged in -->
       <div *ngIf="user">
-        <li nz-submenu nzOpen nzTitle="Profile" nzIcon="user">
+        <li nz-submenu nzTitle="Profile" nzIcon="user">
           <ul>
             <li nz-menu-item nzMatchRouter>
               <a routerLink="/personal-info">Personal Info</a>
             </li>
           </ul>
         </li>
-        <li nz-submenu nzOpen nzTitle="Applications" nzIcon="audit">
+        <li nz-submenu nzTitle="Applications" nzIcon="audit">
           <ul>
             <li nz-menu-item nzMatchRouter>
               <a routerLink="/applications/grant-of-probate">Grant of Probate</a>
@@ -32,7 +32,7 @@
             </li>
           </ul>
         </li>
-        <li nz-submenu nzOpen nzTitle="Payments" nzIcon="pay-circle">
+        <li nz-submenu nzTitle="Payments" nzIcon="pay-circle">
           <ul>
             <li nz-menu-item nzMatchRouter>
               <a routerLink="/payment-history">History</a>

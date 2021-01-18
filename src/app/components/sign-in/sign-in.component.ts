@@ -4,6 +4,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { FormErrorService } from 'src/app/services/form-error.service';
+import { FormValidatorService } from 'src/app/services/form-validator.service';
 import { LoadingScreenComponent } from '../loading-screen/loading-screen.component';
 
 @Component({
@@ -19,6 +20,7 @@ export class SignInComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               public formErrorSvc: FormErrorService,
+              private formValidatorSvc: FormValidatorService,
               private router: Router,
               public auth: AngularFireAuth,
               private snackBar: MatSnackBar) { }
@@ -34,7 +36,7 @@ export class SignInComponent implements OnInit {
   }
 
   signIn() {
-    if (this.signInForm.valid) {
+    if (this.formValidatorSvc.validateForm(this.signInForm)) {
       this.loadingScreen.show()
       this.auth.signInWithEmailAndPassword(
         this.signInForm.get("email").value,
@@ -43,6 +45,7 @@ export class SignInComponent implements OnInit {
         this.snackBar.open("successfully logged in", "dismiss")
         this.router.navigate(['/personal-info'])
       }).catch((e) => {
+        console.log(e)
         this.snackBar.open("failed to login", "dismiss")
       }).finally(() => {
         this.loadingScreen.hide()
@@ -59,7 +62,7 @@ export class SignInComponent implements OnInit {
   }
 
   sendPasswordResetEmail() {
-    if (this.passwordRecoveryForm.get("passwordResetEmail").valid) {
+    if (this.formValidatorSvc.validateForm(this.passwordRecoveryForm.get("passwordResetEmail"))) {
       this.auth.sendPasswordResetEmail(
         this.signInForm.get("passwordResetEmail").value
       ).then((response) => {
