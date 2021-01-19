@@ -26,9 +26,9 @@ export class PaymentComponent implements OnInit {
     this.paymentForm = this.fb.group({
       amount: new FormControl(null),
       fullName: new FormControl(null, [Validators.required]),
-      cardNumber: new FormControl(null, [Validators.required]),
-      cardExpiryDate: new FormControl(null, [Validators.required]),
-      cvc: new FormControl(null, [Validators.required])
+      cardNumber: new FormControl(null, [Validators.required, Validators.minLength(16), Validators.maxLength(16)]),
+      cardExpiryDate: new FormControl(null, [Validators.required, Validators.pattern("^[0-9]{2}/[0-9]{2}$")]),
+      cvc: new FormControl(null, [Validators.required, Validators.pattern("^[0-9]{3}$")])
     });
   }
 

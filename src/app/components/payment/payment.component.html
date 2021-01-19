@@ -8,22 +8,22 @@
     </mat-form-field>
     <mat-form-field appearance="outline" style="width: 100%;">
         <mat-label>Card Number</mat-label>
-        <input matInput formControlName="cardNumber">
+        <input matInput formControlName="cardNumber" placeholder="1234 1234 1234 1234">
         <mat-error *ngIf="paymentForm.get('cardNumber').invalid">{{formErrorSvc.getErrorMessage('cardNumber', paymentForm.get('cardNumber'))}}</mat-error>
     </mat-form-field>
     <div class="section-wrapper">
         <div class="left-div">
             <mat-form-field appearance="outline" style="width: 100%;">
                 <mat-label>Card Expiry Date</mat-label>
-                <input matInput formControlName="cardExpiryDate">
-                <mat-error *ngIf="paymentForm.get('cardExpiryDate').invalid">{{formErrorSvc.getErrorMessage('cardExpiryDate', paymentForm.get('cardExpiryDate'))}}</mat-error>
+                <input matInput formControlName="cardExpiryDate" placeholder="MM/YY">
+                <mat-error *ngIf="paymentForm.get('cardExpiryDate').invalid">must have format like 11/19</mat-error>
             </mat-form-field>
         </div>
         <div class="right-div">
             <mat-form-field appearance="outline" style="width: 100%;">
                 <mat-label>Security Code</mat-label>
-                <input matInput formControlName="cvc">
-                <mat-error *ngIf="paymentForm.get('cvc').invalid">{{formErrorSvc.getErrorMessage('cvc', paymentForm.get('cvc'))}}</mat-error>
+                <input matInput formControlName="cvc" placeholder="CVC">
+                <mat-error *ngIf="paymentForm.get('cvc').invalid">must be only 3 digits</mat-error>
             </mat-form-field>
         </div>
     </div>

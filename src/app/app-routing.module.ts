@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'personal-info', component: PersonalInfoComponent, canActivate: [RedirectUnauthorizedToService] },
   { path: 'applications/:type', component: ApplicationsComponent, canActivate: [RedirectUnauthorizedToService]},
   { path: 'documents/:applicationId', component: GeneratedDocumentsComponent, canActivate: [RedirectUnauthorizedToService] },
-  { path: 'payment-history', component: PaymentHistoryComponent, canActivate: [RedirectUnauthorizedToService]},
+  { path: 'payment-history', component: PaymentComponent, canActivate: [RedirectUnauthorizedToService]},
   { path: 'faq', component: FaqComponent},
   { path: 'privacy-policy', component: PrivacyPolicyComponent},
   { path: 'terms-and-conditions', component: TermsAndConditionsComponent},

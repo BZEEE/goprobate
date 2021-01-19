@@ -35,6 +35,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatNativeDateModule } from '@angular/material/core';
 import { GoProbateMainInformationComponent } from './components/go-probate-main-information/go-probate-main-information.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
@@ -97,7 +99,9 @@ registerLocaleData(en);
     MatIconModule,
     AngularFireFunctionsModule,
     MatCheckboxModule,
-    NzCheckboxModule
+    NzCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [CurrentUserResolverService,
               { provide: NZ_I18N, useValue: en_US }],
